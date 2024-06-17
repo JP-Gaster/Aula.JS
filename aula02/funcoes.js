@@ -3,6 +3,15 @@ const cliente = {
     idade: 24,
     email: "joao@firma.com",
     telefone: ["(43)99956-0459", "(43)99924-4321"],
+    saldo: 200,
+    efetua_pagamento: function (valor_compra){
+        if(valor_compra > this.saldo){
+            console.log("Saldo insuficiente!")
+        }else{
+            this.saldo = this.saldo - valor_compra;
+            console.log(`Pagamento realizado! Novo saldo: ${this.saldo}`)
+        }
+    }
 };
 cliente.endereços = [
     {
@@ -19,6 +28,6 @@ cliente.endereços.push({
         apartamento: false,
         casa: false,
         complemento: "Ao lado da Fenda do Bikini",
-})
+});
 
-console.log(cliente.endereços);
+cliente.efetua_pagamento(50);
